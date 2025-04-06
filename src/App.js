@@ -1,17 +1,19 @@
+// App.js
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './components/Header/Header';
-import './App.css';
+import HeroCategories from './components/HeroSection/HeroCategories';
+import HeroSection from './components/HeroSection/HeroSection';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Header />
-        <main>
-          {/* Add your page content/routes here */}
-        </main>
-      </div>
+      <Header />
+      <HeroCategories />
+      <HeroSection />
+      <Footer />
+      
     </Router>
   );
 }

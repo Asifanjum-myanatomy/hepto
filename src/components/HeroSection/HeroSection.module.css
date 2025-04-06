@@ -1,0 +1,130 @@
+/* HeroSection.module.css */
+.hero {
+  position: relative;
+  height: 90vh;
+  min-height: 600px;
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
+              url('HeroSection.js') center/cover fixed;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.heroContent {
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.textContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: white;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.mainHeading {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.highlight {
+  color: #ffd700;
+  display: block;
+}
+
+.subHeading {
+  font-size: 1.5rem;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.ctaContainer {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.primaryCta {
+  background: #00cc66;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.primaryCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  background: #00ff73;
+}
+
+.categoryCtas {
+  display: flex;
+  gap: 1rem;
+}
+
+.categoryCta {
+  background: rgba(255,255,255,0.9);
+  color: #333;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.categoryCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+/* Parallax Effect */
+@media (prefers-reduced-motion: no-preference) {
+  .hero {
+    background-attachment: fixed;
+  }
+  
+  .textContainer {
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .hero {
+    height: 80vh;
+    background-attachment: scroll;
+  }
+  
+  .mainHeading {
+    font-size: 2.5rem;
+  }
+  
+  .subHeading {
+    font-size: 1.2rem;
+  }
+  
+  .ctaContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .primaryCta {
+    padding: 0.8rem 1.5rem;
+  }
+}

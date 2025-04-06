@@ -1,34 +1,40 @@
-import React, { useState } from 'react';
-import Logo from './Logo';
-import NavMenu from './NavMenu';
-import UserActions from './UserActions';
-import MobileMenu from './MobileMenu';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 
 const Header = () => {
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!isMobileMenuOpen);
-  };
-
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <Logo />
-        <nav className={styles.desktopNav}>
-          <NavMenu />
-        </nav>
-        <UserActions />
-        <button 
-          className={styles.hamburger} 
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
-        >
-          ☰
-        </button>
+        {/* Left Section */}
+        <div className={styles.leftSection}>
+          <Link to="/" className={styles.logo}>
+            Hepto
+          </Link>
+          <div className={styles.locationSelector}>
+            <span className={styles.locationText}>Select Location</span>
+          </div>
+        </div>
+
+        {/* Center Section - Search */}
+        <div className={styles.searchBar}>
+          <input 
+            type="text" 
+            placeholder="Search for..." 
+            className={styles.searchInput}
+          />
+        </div>
+
+        {/* Right Section */}
+        <div className={styles.rightSection}>
+          <Link to="/login" className={styles.navItem}>
+            Login
+          </Link>
+          <Link to="/cart" className={styles.navItem}>
+            Cart
+          </Link>
+        </div>
       </div>
-      {isMobileMenuOpen && <MobileMenu onClose={toggleMobileMenu} />}
     </header>
   );
 };
