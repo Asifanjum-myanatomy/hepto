@@ -2,11 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 
-const Header = () => {
+const Header = ({ onLoginClick }) => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        {/* Left Section */}
         <div className={styles.leftSection}>
           <Link to="/" className={styles.logo}>
             Hepto
@@ -16,20 +15,21 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Center Section - Search */}
         <div className={styles.searchBar}>
           <input 
-            type="text" 
-            placeholder="Search for..." 
+            type="text"
+            placeholder="Search for..."
             className={styles.searchInput}
           />
         </div>
 
-        {/* Right Section */}
         <div className={styles.rightSection}>
-          <Link to="/login" className={styles.navItem}>
+          <button
+            onClick={onLoginClick}
+            className={styles.navItem}
+          >
             Login
-          </Link>
+          </button>
           <Link to="/cart" className={styles.navItem}>
             Cart
           </Link>

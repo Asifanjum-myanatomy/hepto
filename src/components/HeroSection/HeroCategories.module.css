@@ -1,16 +1,16 @@
 /* HeroCategories.module.css */
 .heroContainer {
   position: relative;
-  margin-top: 70px; /* Header height offset */
+  margin-top: 70px;
 }
 
 .categoriesBar {
   position: fixed;
-  top: 70px; /* Directly below header */
+  top: 70px;
   left: 0;
   right: 0;
-  background: #f0fff4; /* Match header background */
-  z-index: 999; /* Below header but above content */
+  background: #f0fff4;
+  z-index: 999;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   border-top: 1px solid #e2e8f0;
 }
@@ -18,8 +18,8 @@
 .categoriesContainer {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
-  padding: 0.8rem 2rem;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
   margin: 0 auto;
   max-width: 1200px;
   overflow-x: auto;
@@ -29,40 +29,41 @@
 .categoryButton {
   background: none;
   border: none;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0.8rem;
   cursor: pointer;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   transition: all 0.2s ease;
-  white-space: nowrap;
-  font-size: 1rem;
+  min-width: 70px;
+}
+
+
+.categoryIcon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.categoryName {
+  font-size: 0.8rem;
   font-weight: 600;
   color: #2d3748;
-}
-
-/* Capitalize first letter only */
-.categoryButton::first-letter {
-  text-transform: uppercase;
-}
-
-/* Logo/symbol */
-.categoryButton::before {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 20px;
-  background: #48bb78;
-  mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/></svg>') no-repeat center;
-  -webkit-mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/></svg>') no-repeat center;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .categoryButton:hover {
+  transform: translateY(-2px);
+}
+
+.categoryButton:hover .categoryName {
   color: #2b6cb0;
 }
 
-.categoryButton:hover::before {
-  background: #2b6cb0;
+.categoryButton:hover .categoryIcon svg {
+  fill: #2b6cb0;
 }
 
 /* Scrollbar styling */
@@ -79,19 +80,52 @@
   border-radius: 2px;
 }
 
+/* HeroCategories.module.css */
+/* ... keep other styles the same ... */
+
+.categoryButton {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2d3748;
+  border-radius: 8px;
+}
+
+.categoryIcon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.categoryName {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
-  .categoriesContainer {
-    justify-content: flex-start;
-    padding: 0.8rem 1rem;
-  }
-  
   .categoryButton {
-    font-size: 0.9rem;
+    padding: 0.5rem;
+    font-size: 0.8rem;
   }
 
-  .categoryButton::before {
-    width: 18px;
-    height: 18px;
+  .categoryIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .categoryName {
+    font-size: 0.8rem;
   }
 }
