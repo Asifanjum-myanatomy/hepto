@@ -1,7 +1,7 @@
 /* HeroCategories.module.css */
 .heroContainer {
   position: relative;
-  margin-top: 70px;
+  margin-top: 70px; /* Match header height */
 }
 
 .categoriesBar {
@@ -11,33 +11,24 @@
   right: 0;
   background: #f0fff4;
   z-index: 999;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  border-top: 1px solid #e2e8f0;
-}
-
-.categoriesContainer {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  padding: 0.8rem 1rem;
-  margin: 0 auto;
-  max-width: 1200px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
 
-.categoryButton {
-  background: none;
-  border: none;
-  padding: 0.5rem 0.8rem;
-  cursor: pointer;
+
+.categoriesContainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s ease;
-  min-width: 70px;
+  gap: 0.8rem;
+  padding: 0.5rem 1rem;
+  margin: 0 auto;
 }
+
+.categoryButton {
+  flex-shrink: 0; /* Prevent shrinking */
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
 
 
 .categoryIcon svg {
@@ -113,11 +104,31 @@
   font-weight: 600;
 }
 
+
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
+  /* Assume mobile header is 60px tall */
+  .heroContainer {
+    margin-top: 110px;   /* 60px header + 50px bar */
+  }
+
+  .categoriesBar {
+    top: 60px;           /* mobile header height */
+    height: 50px;        /* mobile bar height */
+  }
+
+  .categoriesContainer {
+    padding: 0 0.5rem;
+  }
+
   .categoryButton {
-    padding: 0.5rem;
-    font-size: 0.8rem;
+    flex-direction: column;     /* icon above text */
+    justify-content: center;
+    padding: 0.4rem 0.6rem;
+    min-width: 72px;            /* ensure tap target */
+    gap: 4px;
+    font-size: 0.75rem;
   }
 
   .categoryIcon {
@@ -126,6 +137,6 @@
   }
 
   .categoryName {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 }

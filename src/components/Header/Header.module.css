@@ -1,3 +1,32 @@
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background: #f0fff4;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  /* Ensure full width coverage */
+  left: 0;
+  right: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem; /* Reduced from 2rem */
+  gap: 1.5rem;
+}
+
 .header {
   background: #f0fff4;  /* Light green background */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -18,24 +47,26 @@
   gap: 1.5rem;
 }
 
+
 .leftSection {
   display: flex;
   align-items: center;
-  gap: 2rem;
   flex: 1;
+  gap: 1.5rem; /* Add this line */
 }
 
 .logo {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #2b6cb0;  /* Changed to a complementary blue */
+  color: #2b6cb0;
   text-decoration: none;
+  margin-right: 7rem; /* Optional: Add extra spacing if needed */
 }
 
 .locationSelector {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem; /* Increased from 0.5rem */
   cursor: pointer;
 }
 
@@ -80,23 +111,52 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .container {
-    flex-direction: column;
-    padding: 0 1rem;
+    display: grid;
+    grid-template-areas:
+      "left right"
+      "location-search location-search";
     gap: 1rem;
+    padding: 0 1rem;
   }
 
   .leftSection {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .searchBar {
-    width: 100%;
-    order: 3;
+    grid-area: left;
+    justify-content: flex-start;
+    margin-right: auto;
   }
 
   .rightSection {
-    width: 100%;
-    justify-content: center;
+    grid-area: right;
+    justify-content: flex-end;
+    gap: 1.5rem;
+  }
+
+  .locationSelector {
+    grid-area: location-search;
+    justify-content: flex-start;
+    margin-top: -1rem; /* Adjust as needed */
+  }
+
+  .searchBar {
+    position: relative;
+    margin-top: 2rem;
+  }
+
+  .searchInput {
+    padding-left: 6rem; /* Make space for location */
+  }
+
+  .logo {
+    margin-right: 0;
+  }
+
+  /* Position location absolutely within the search area */
+  .locationSelector {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    margin: 0;
   }
 }

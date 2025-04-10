@@ -3,14 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
     "react-scripts": "^5.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "npx tailwindcss -i ./src/styles/input.css -o ./src/styles/output.css --watch",
     "build": "react-scripts build",
+    "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -33,9 +35,13 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.3",
-    "tailwindcss": "^4.1.1",
-    "cross-env": "^7.0.3"
-  }
+    "autoprefixer": "^10.4.14",
+    "cross-env": "^7.0.3",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.4.17"
+  },
+  "main": "index.js",
+  "repository": "git@github.com:Asifanjum-myanatomy/hepto.git",
+  "author": "asifahmad01 <5841asifanjum@gmail.com>",
+  "license": "MIT"
 }
