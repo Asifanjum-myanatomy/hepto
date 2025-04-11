@@ -82,7 +82,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
+
+.promo {
+  width: 100%;
+  /* no extra centering needed here since the img is block‑centered */
+}
+
+
 
 .image {
   width: 100%;
