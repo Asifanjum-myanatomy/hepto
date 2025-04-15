@@ -17,7 +17,10 @@ function cartReducer(state, action) {
           )
         };
       }
-      return { ...state, items: [...state.items, { ...action.payload, quantity: 1 }] };
+      return {
+        ...state,
+        items: [...state.items, { ...action.payload, quantity: 1 }]
+      };
     }
     case 'UPDATE_QUANTITY':
       return {
@@ -40,19 +43,27 @@ function cartReducer(state, action) {
 }
 
 export function CartProvider({ children }) {
-  const [state, dispatch] = useReducer(cartReducer, initialState, () => {
-    const stored = localStorage.getItem('cart');
-    return stored ? JSON.parse(stored) : initialState;
-  });
+  const [state, dispatch] = useReducer(
+    cartReducer,
+    initialState,
+    () => {
+      const stored = localStorage.getItem('cart');
+      return stored ? JSON.parse(stored) : initialState;
+    }
+  );
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(state));
   }, [state]);
 
-  const addItem = item => dispatch({ type: 'ADD_ITEM', payload: item });
-  const updateQuantity = (id, qty) => dispatch({ type: 'UPDATE_QUANTITY', payload: { id, quantity: qty } });
-  const removeItem = id => dispatch({ type: 'REMOVE_ITEM', payload: id });
-  const clearCart = () => dispatch({ type: 'CLEAR_CART' });
+  const addItem = item =>
+    dispatch({ type: 'ADD_ITEM', payload: item });
+  const updateQuantity = (id, qty) =>
+    dispatch({ type: 'UPDATE_QUANTITY', payload: { id, quantity: qty } });
+  const removeItem = id =>
+    dispatch({ type: 'REMOVE_ITEM', payload: id });
+  const clearCart = () =>
+    dispatch({ type: 'CLEAR_CART' });
 
   const totalItems = state.items.reduce((sum, i) => sum + i.quantity, 0);
   const totalPrice = state.items.reduce((sum, i) => sum + i.quantity * i.price, 0);

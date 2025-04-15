@@ -1,15 +1,17 @@
-import React from 'react'
-import styles from './Card.module.css'
+// src/components/Card/Card.js
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styles from './Card.module.css';
 
 /**
- * @param {string} image   – URL of the card image
- * @param {string} title   – Text label below the image
- * @param {string} link    – href to wrap the whole card
- * @param {object} [style] – optional inline style overrides
+ * @param {string} image
+ * @param {string} title
+ * @param {string} link   – internal route, e.g. "/category/1"
+ * @param {object} [style]
  */
 export default function Card({ image, title, link, style }) {
   return (
-    <a href={link} className={styles.card} style={style}>
+    <Link to={link} className={styles.card} style={style}>
       <div className={styles.imageWrapper}>
         <img
           src={image}
@@ -19,6 +21,6 @@ export default function Card({ image, title, link, style }) {
         />
       </div>
       <p className={styles.title}>{title}</p>
-    </a>
-  )
+    </Link>
+  );
 }

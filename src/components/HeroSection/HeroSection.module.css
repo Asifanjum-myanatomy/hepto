@@ -2,7 +2,7 @@
 .stack {
   display: flex;
   flex-direction: column;
-  gap: 2rem; /* vertical spacing between each section */
+  gap: 2rem;
 }
 
 .hero {
@@ -54,11 +54,23 @@
 
 .carousel {
   display: flex;
+  margin-top: 7rem;
   gap: 1rem;
   padding: 1rem 2rem;
   overflow-x: auto;
   scrollbar-width: none;
   background: #fff;
+}
+
+.itemsSection {
+  padding: 2rem 1rem;
+  background: #fafafa;
+}
+
+.itemsTitle {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #333;
 }
 
 .carousel::-webkit-scrollbar {

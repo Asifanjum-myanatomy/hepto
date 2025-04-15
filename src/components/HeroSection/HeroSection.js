@@ -1,14 +1,14 @@
-import React from 'react'
-import Card from '../Card/Card'
-import styles from './HeroSection.module.css'
-import heroBg from '../../assets/hero-bg.jpg'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import HeroCategories from './HeroCategories';
+import Card from '../Card/Card';
+import styles from './HeroSection.module.css';
+import heroBg from '../../assets/hero-bg.jpg';
 
 const categories = [
   {
     id: '1', name: 'Fruits & Vegetables', image:
-      'https://cdn.zeptonow.com/production/cms/category/38047553-95f3-47c6-a1ff-4794e1227d3a.png',
-    link:
-      '/cn/masala-dry-fruits-more/masala-dry-fruits-more/cid/0c2ccf87-e32c-4438-9560-8d9488fc73e0/scid/8b44cef2-1bab-407e-aadd-29254e6778fa?'
+      'https://cdn.zeptonow.com/production/cms/category/38047553-95f3-47c6-a1ff-4794e1227d3a.png'
   },
   { id: '2', name: 'Atta, Rice, Oil & Dals', image: 'https://cdn.zeptonow.com/production/cms/category/54dd01e1-2781-4a45-bc3a-ed53ebab9bd9.png', link: '/hero-bg.jpg' },
   { id: '3', name: 'Masala & Dry Fruits', image: 'https://cdn.zeptonow.com/production/cms/category/8d4d3977-5197-49d9-9867-8a670524e48b.png', link: '/cn/masala-dry-fruits-more/masala-dry-fruits-more/cid/0c2ccf87-e32c-4438-9560-8d9488fc73e0/scid/8b44cef2-1bab-407e-aadd-29254e6778fa?' },
@@ -24,19 +24,24 @@ const categories = [
   { id: '13', name: 'Tea, Coffee & More', image: 'https://cdn.zeptonow.com/production/cms/category/92493ad5-6242-42f9-b951-dca41e55d744.png', link: '/tea-coffee-more' },
   { id: '14', name: 'Makeup & Beauty', image: 'https://cdn.zeptonow.com/production/cms/category/d1127e88-d743-457a-a588-489267297de4.png', link: '/makeup-beauty' },
   { id: '15', name: 'Bath & Body', image: 'https://cdn.zeptonow.com/production/cms/category/b1909dfd-726c-412b-beb7-9553bc909363.png', link: '/bath-body' }
-]
+];
+
 
 export default function HeroSection() {
+
+
+
   return (
     <>
-      {/* 1️⃣ Cards Carousel Above Hero */}
+      <HeroCategories />
+
+      {/* 1️⃣ Cards Carousel */}
       <div className={styles.carousel}>
         {categories.map(cat => (
           <Card
             key={cat.id}
             image={cat.image}
-            title={cat.name}
-            link={cat.link}
+            link={`/category/${cat.id}`}
           />
         ))}
       </div>
@@ -44,28 +49,28 @@ export default function HeroSection() {
       {/* 2️⃣ PREMIUM PROMO BANNER */}
 
       {/* 2️⃣ PROMO BANNER – 80% width, centered */}
-<div className={styles.promo}>
-  <a
-    aria-label="Paan Corner"
-    href="/cn/paan-corner/cigarettes/cid/cd50825e-baf8-47fe-9abc-ed9556122a9a/scid/5bcbee47-7c83-4279-80f0-7ecc068496df"
-  >
-    <img
-      src="https://cdn.zeptonow.com/production/tr:w-1280,ar-3840-705,pr-true,f-auto,q-80/inventory/banner/4ea3de05-f469-4df2-9548-db9c9863dfdf.png"
-      alt="Paan Corner Banner"
-      loading="lazy"
-      style={{
-        width: '80%',                // ← your requested width
-        aspectRatio: '5.44681 / 1',  // ← maintain ratio
-        objectFit: 'contain',
-        display: 'block',            // ← needed for margin auto
-        margin: '0 auto 52px'        // ← center + bottom spacing
-      }}
-    />
-  </a>
-</div>
+      <div className={styles.promo}>
+        <a
+          aria-label="Paan Corner"
+          href="/cn/paan-corner/cigarettes/cid/cd50825e-baf8-47fe-9abc-ed9556122a9a/scid/5bcbee47-7c83-4279-80f0-7ecc068496df"
+        >
+          <img
+            src="https://cdn.zeptonow.com/production/tr:w-1280,ar-3840-705,pr-true,f-auto,q-80/inventory/banner/4ea3de05-f469-4df2-9548-db9c9863dfdf.png"
+            alt="Paan Corner Banner"
+            loading="lazy"
+            style={{
+              width: '80%',                // ← your requested width
+              aspectRatio: '5.44681 / 1',  // ← maintain ratio
+              objectFit: 'contain',
+              display: 'block',            // ← needed for margin auto
+              margin: '0 auto 52px'        // ← center + bottom spacing
+            }}
+          />
+        </a>
+      </div>
 
 
-      {/* 3 Hero Banner */}
+      {/* 3️⃣ Hero Banner */}
       <section
         className={styles.hero}
         style={{
@@ -75,7 +80,7 @@ export default function HeroSection() {
           `,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
+          backgroundAttachment: 'fixed',
         }}
       >
         <div className={styles.heroContent}>

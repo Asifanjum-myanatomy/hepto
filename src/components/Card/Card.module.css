@@ -1,15 +1,51 @@
+.carousel {
+  display: flex;
+  gap: 1rem; /* 1rem gap between each card */
+  overflow-x: auto;
+  padding: 1rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
 .card {
-  flex: 0 0 auto;           /* prevent shrinking */
-  width: 100px;             /* same as Zepto’s min‑width */
+  flex: 0 0 auto;
+  margin-top: 1rem;
+  width: 100px; /* Standard card width */
+  height: 100px; 
   text-align: center;
-  margin: 3rem 0;
   text-decoration: none;
   color: inherit;
+
+  /* Border and layout styles */
+  border-top: 0px solid rgb(229, 231, 235);
+  border-right: 0px solid rgb(229, 231, 235);
+  border-bottom: 0px solid rgb(229, 231, 235);
+  border-left: 0px solid rgb(229, 231, 235);
+  border-image: none;
+  border-image-slice: 100%;
+  border-image-width: 1;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+
+  box-sizing: border-box;
+  display: block;
+  font-family: '__zeptoNorms_eaea0f', '__zeptoNorms_Fallback_eaea0f';
+  font-feature-settings: normal;
+  line-height: 24px;
+  tab-size: 4;
+  text-size-adjust: 100%;
+  unicode-bidi: isolate;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  transition: transform 0.2s;
 }
 
 .imageWrapper {
   width: 100%;
-  height: 148px;
+  height: 100%;
   background: white;
   border-radius: 8px;
   overflow: hidden;
@@ -26,12 +62,11 @@
 
 .title {
   margin-top: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: #333;
   line-height: 1.2;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  transition: transform 0.2s;
 }
