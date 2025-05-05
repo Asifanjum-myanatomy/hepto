@@ -1,16 +1,18 @@
 // src/components/Header/Header.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaSearch, FaUser, FaShoppingCart } from 'react-icons/fa'; // Fixed imports
 import Cart from '../Cart/Cart';
 import styles from './Header.module.css';
 
 const Header = ({ onLoginClick, onLocationClick }) => {
   const [showCart, setShowCart] = useState(false);
 
-  const openCart = e => {
-    e.preventDefault();       // keep it from navigating away
+  const openCart = (e) => {
+    e.preventDefault();
     setShowCart(true);
   };
+
   const closeCart = () => setShowCart(false);
 
   return (
@@ -27,30 +29,39 @@ const Header = ({ onLoginClick, onLocationClick }) => {
           </div>
 
           <div className={styles.searchBar}>
-            <input 
+            <input
               type="text"
               placeholder="Search for..."
               className={styles.searchInput}
             />
+            <FaSearch className={styles.searchIcon} />
           </div>
 
-          <div className={styles.rightSection}>
+          {/* <div className={styles.rightSection}>
             <button onClick={onLoginClick} className={styles.navItem}>
               Login
-            </button>
-            {/* intercept this link to open the cart drawer */}
-            <Link 
-              to="/cart" 
-              className={styles.navItem} 
-              onClick={openCart}
-            >
-              Cart
+            </button> */}
+
+          <div className={styles.navItems}>
+            {/* Login Button */}
+            <Link to="/login" className={styles.navItem}>
+              <div className={styles.navLink}>
+                <FaUser className={styles.icon} /> {/* Using FaUser icon */}
+                <span className={styles.navText}>Login</span>
+              </div>
+            </Link>
+
+            {/* Cart Button */}
+            <Link to="/cart" className={styles.navItem} onClick={openCart}>
+              <div className={styles.navLink}>
+                <FaShoppingCart className={styles.icon} /> {/* Using FaShoppingCart icon */}
+                <span className={styles.navTextSmall}>Cart</span>
+              </div>
             </Link>
           </div>
         </div>
       </header>
 
-      {/* render your Cart component as an overlay/drawer */}
       {showCart && <Cart onClose={closeCart} />}
     </>
   );

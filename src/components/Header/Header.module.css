@@ -1,3 +1,8 @@
+/* Header.module.css */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -6,53 +11,29 @@ body {
 
 .header {
   background: #f0fff4;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   padding: 1rem 0;
   position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  /* Ensure full width coverage */
-  left: 0;
+  top: 0; 
+  left: 0; 
   right: 0;
-}
-
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem; /* Reduced from 2rem */
-  gap: 1.5rem;
-}
-
-.header {
-  background: #f0fff4;  /* Light green background */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 1rem 0;
-  position: fixed;
-  width: 100%;
-  top: 0;
   z-index: 1000;
 }
 
 .container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
-  gap: 1.5rem;
+  padding: 0 1rem;
+  gap: 1rem;
 }
-
 
 .leftSection {
   display: flex;
   align-items: center;
-  flex: 1;
-  gap: 1.5rem; /* Add this line */
+  flex: 0 0 auto;
+  gap: 1.5rem;
 }
 
 .logo {
@@ -60,14 +41,12 @@ body {
   font-weight: 700;
   color: #2b6cb0;
   text-decoration: none;
-  margin-right: 7rem; /* Optional: Add extra spacing if needed */
 }
 
 .locationSelector {
   display: flex;
   align-items: center;
-  gap: 0.8rem; /* Increased from 0.5rem */
-  cursor: pointer;
+  gap: 0.8rem;
 }
 
 .locationText {
@@ -75,88 +54,156 @@ body {
   font-weight: 500;
 }
 
+/* Updated Search Bar Section */
 .searchBar {
-  flex: 2;
-  max-width: 600px;
+  margin-left: auto;
+  width: 75%;
+  position: relative;
 }
 
 .searchInput {
-  background: #ffffff;
   width: 100%;
-  padding: 0.8rem 1.2rem;
+  padding: 0.8rem 2.5rem 0.8rem 1.2rem;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
   font-size: 1rem;
+  background: #fff;
 }
 
-.rightSection {
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  right: 1.2rem;
+  transform: translateY(-50%);
+  color: #999;
+  pointer-events: none;
+}
+
+.navItems {
   display: flex;
-  gap: 2rem;
-  flex: 1;
-  justify-content: flex-end;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: auto;
+  flex: 0 0 auto;
 }
 
 .navItem {
-  color: #2f855a;
   text-decoration: none;
+  color: #2f855a;
   font-weight: 500;
   padding: 0.5rem 0;
   transition: color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .navItem:hover {
   color: #2b6cb0;
 }
 
-/* Mobile Responsive */
+.navLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 0.25rem;
+}
+
+.navText {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.navTextSmall {
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
 @media (max-width: 768px) {
   .container {
     display: grid;
-    grid-template-areas:
-      "left right"
-      "location-search location-search";
+    grid-template-columns: auto 1fr;
+    grid-template-areas: 
+      "logo navs"
+      "search search";
     gap: 1rem;
-    padding: 0 1rem;
+    align-items: center;
   }
 
   .leftSection {
-    grid-area: left;
-    justify-content: flex-start;
-    margin-right: auto;
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
 
-  .rightSection {
-    grid-area: right;
-    justify-content: flex-end;
-    gap: 1.5rem;
-  }
-
-  .locationSelector {
-    grid-area: location-search;
-    justify-content: flex-start;
-    margin-top: -1rem; /* Adjust as needed */
+  .navItems {
+    grid-area: navs;
+    margin-left: 0;
+    justify-self: end;
   }
 
   .searchBar {
-    position: relative;
-    margin-top: 2rem;
+    grid-area: search;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .locationSelector {
+    display: none; /* Hide location on mobile */
+  }
+
+  /* Mobile-specific adjustments */
+  .logo {
+    font-size: 1.4rem; /* Smaller logo for mobile */
+  }
+
+  .navItems {
+    gap: 1rem; /* Reduce gap between nav items */
+  }
+
+  .navText,
+  .navTextSmall {
+    display: none; /* Hide text labels on mobile */
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px; /* Larger touch targets */
+    margin-bottom: 0;
   }
 
   .searchInput {
-    padding-left: 6rem; /* Make space for location */
+    padding: 0.7rem 2rem 0.7rem 1rem; /* Slightly smaller padding */
+  }
+
+  .searchIcon {
+    right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    grid-template-columns: auto 1fr;
+    gap: 0.75rem;
+    padding: 0 0.5rem;
   }
 
   .logo {
-    margin-right: 0;
+    font-size: 1.2rem;
   }
 
-  /* Position location absolutely within the search area */
-  .locationSelector {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
-    margin: 0;
+  .navItems {
+    gap: 0.75rem;
+  }
+
+  .icon {
+    width: 22px;
+    height: 22px;
   }
 }
